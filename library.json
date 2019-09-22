@@ -14,7 +14,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "I-Connect/Sense_MPU6050"
+        "url": "https://github.com/I-Connect/Sense_MPU6050.git"
     },
     "frameworks": "Arduino",
     "platforms": [

@@ -372,10 +372,16 @@ Vector MPU6050::readRawAccel(void)
 	uint8_t zha = Wire.receive();
 	uint8_t zla = Wire.receive();
     #endif
-
+    
+    #ifdef ESP32
+    ra.XAxis = (int16_t)(xha << 8 | xla);
+    ra.YAxis = (int16_t)(yha << 8 | yla);
+    ra.ZAxis = (int16_t)(zha << 8 | zla);
+    #elif
     ra.XAxis = xha << 8 | xla;
     ra.YAxis = yha << 8 | yla;
     ra.ZAxis = zha << 8 | zla;
+    #endif
 
     return ra;
 }
@@ -434,9 +440,15 @@ Vector MPU6050::readRawGyro(void)
 	uint8_t zla = Wire.receive();
     #endif
 
+    #ifdef ESP32
+    rg.XAxis = (int16_t)(xha << 8 | xla);
+    rg.YAxis = (int16_t)(yha << 8 | yla);
+    rg.ZAxis = (int16_t)(zha << 8 | zla);
+    #elif
     rg.XAxis = xha << 8 | xla;
     rg.YAxis = yha << 8 | yla;
     rg.ZAxis = zha << 8 | zla;
+    #endif
 
     return rg;
 }
